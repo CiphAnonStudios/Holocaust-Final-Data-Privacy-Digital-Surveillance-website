@@ -83,6 +83,41 @@ footer {
     background: #020617;
     color: #aaa;
 }
+
+ /* FEATURE */
+.feature{
+  max-width:1000px;
+  margin:50px auto;
+  padding:20px;
+}
+
+.feature-card{
+  background:var(--card);
+  border:1px solid var(--stroke);
+  border-radius:20px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+
+.feature-card img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+}
+
+.feature-content{
+  padding:20px;
+}
+
+.feature-content h2{
+  color:var(--accent);
+}
+
+.feature-content p{
+  color:var(--muted);
+  margin-top:8px;
+}   
 </style>
 </head>
 
@@ -102,6 +137,16 @@ footer {
     </p>
 </div>
 
+<section class="feature">
+  <div class="feature-card">
+    <img src="" alt="RepAnt">
+    <div class="feature-content">
+      <h2>header card</h2>
+      <p>info</p>
+    </div>
+  </div>
+</section>
+    
 <!-- CARDS -->
 <div class="section">
     <h2>cards</h2>
