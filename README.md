@@ -5,7 +5,7 @@ This website is about data privacy. It explains how your data is collected onlin
 
 ---
 
-## Home Page (home.html)
+## Home Page (index.html)
 - Title and intro  
 - Simple explanation of the topic  
 - Why it matters section  
