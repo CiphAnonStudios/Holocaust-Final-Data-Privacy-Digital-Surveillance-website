@@ -4,151 +4,579 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Overview - Data Privacy</title>
+<title>Overview | Data Privacy</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    font-family: 'Inter', sans-serif;
-    background: #0b0f19;
-    color: #e5e7eb;
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#f8fbff;
+    color:#111827;
+    overflow-x:hidden;
+    position:relative;
+    min-height:100vh;
+}
+
+/* PROGRESS BAR */
+
+#progress-bar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:0%;
+    height:5px;
+
+    background:linear-gradient(to right,#60a5fa,#2563eb);
+
+    z-index:99999;
+
+    box-shadow:0 0 20px rgba(37,99,235,0.4);
+}
+
+/* BACKGROUND EFFECTS */
+
+.blur1,
+.blur2{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(140px);
+    z-index:-1;
+}
+
+.blur1{
+    width:500px;
+    height:500px;
+    background:#93c5fd;
+    top:-150px;
+    left:-120px;
+    opacity:0.5;
+}
+
+.blur2{
+    width:450px;
+    height:450px;
+    background:#bfdbfe;
+    right:-100px;
+    top:400px;
+    opacity:0.45;
+}
+
+/* CONTAINER */
+
+.container{
+    width:100%;
+    max-width:1350px;
+    margin:auto;
+    padding:0 40px;
 }
 
 /* NAVBAR */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 60px;
-    background: rgba(15, 23, 42, 0.95);
-    position: sticky;
-    top: 0;
+
+nav{
+    width:100%;
+    padding:25px 0;
+
+    position:sticky;
+    top:0;
+
+    z-index:999;
+
+    backdrop-filter:blur(18px);
+
+    background:rgba(255,255,255,0.6);
+
+    border-bottom:1px solid #dbeafe;
 }
 
-nav h2 {
-    font-weight: 600;
+.nav-content{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-nav a {
-    color: #9ca3af;
-    margin-left: 25px;
-    text-decoration: none;
-    font-size: 14px;
+.logo{
+    font-size:24px;
+    font-weight:700;
 }
 
-nav a:hover {
-    color: white;
+.nav-links a{
+    text-decoration:none;
+    color:#4b5563;
+    margin-left:28px;
+    font-size:15px;
+    transition:0.25s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    color:#2563eb;
+    font-weight:600;
+}
+
+/* HERO */
+
+.hero{
+    padding:110px 0 80px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:68px;
+    margin-bottom:25px;
+
+    background:linear-gradient(
+    to right,
+    #2563eb,
+    #60a5fa,
+    #2563eb
+    );
+
+    background-size:200% auto;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:
+    fadeUp 1s ease,
+    gradientMove 5s linear infinite;
+}
+
+.hero p{
+    max-width:850px;
+    margin:auto;
+    color:#6b7280;
+    line-height:1.9;
+    font-size:18px;
 }
 
 /* SECTION */
-.section {
-    padding: 80px 60px;
-    max-width: 900px;
-    margin: auto;
+
+.section{
+    padding:80px 0;
 }
 
-h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
+.section-title{
+    font-size:42px;
+    margin-bottom:20px;
+    position:relative;
 }
 
-p {
-    color: #9ca3af;
-    line-height: 1.7;
-    margin-bottom: 20px;
+.section-title::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-10px;
+
+    width:80px;
+    height:5px;
+
+    border-radius:999px;
+
+    background:linear-gradient(to right,#60a5fa,#2563eb);
 }
 
-/* IMAGE */
-.image {
-    margin: 40px 0;
-    text-align: center;
+/* CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+    margin-top:50px;
 }
 
-.image img {
-    width: 100%;
-    max-width: 600px;
-    border-radius: 12px;
+.card{
+    background:rgba(255,255,255,0.75);
+
+    backdrop-filter:blur(14px);
+
+    border:2px solid #bfdbfe;
+
+    padding:35px;
+
+    border-radius:30px 10px 30px 10px;
+
+    transition:0.35s;
+
+    box-shadow:0 15px 40px rgba(0,0,0,0.04);
+
+    animation:fadeUp 1s ease;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+
+    border-color:#60a5fa;
+
+    box-shadow:
+    0 25px 50px rgba(37,99,235,0.12),
+    0 0 25px rgba(96,165,250,0.25);
+}
+
+.card-icon{
+    width:65px;
+    height:65px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:linear-gradient(to bottom right,#60a5fa,#2563eb);
+
+    border-radius:22px 8px 22px 8px;
+
+    margin-bottom:25px;
+
+    color:white;
+
+    font-size:24px;
+
+    box-shadow:0 10px 25px rgba(37,99,235,0.2);
+}
+
+.card h3{
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+.card p{
+    color:#6b7280;
+    line-height:1.8;
+}
+
+/* INFO SECTION */
+
+.info-box{
+    margin-top:60px;
+
+    background:white;
+
+    border:2px solid #dbeafe;
+
+    border-radius:35px 12px 35px 12px;
+
+    padding:50px;
+
+    box-shadow:0 20px 50px rgba(0,0,0,0.04);
+}
+
+.info-box p{
+    color:#4b5563;
+    line-height:2;
+    margin-bottom:25px;
+    font-size:17px;
 }
 
 /* FOOTER */
-footer {
-    text-align: center;
-    padding: 30px;
-    background: #020617;
-    color: #6b7280;
-    margin-top: 40px;
+
+footer{
+    padding:50px 0;
+    text-align:center;
+    color:#6b7280;
+    font-size:15px;
 }
+
+/* CREDIT */
+
+.credit-wrapper{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    z-index:1000;
+}
+
+.credit-wrapper img{
+    width:60px;
+    height:60px;
+    object-fit:cover;
+
+    border-radius:24px 8px 24px 8px;
+
+    border:2px solid #93c5fd;
+
+    box-shadow:0 10px 25px rgba(37,99,235,0.15);
+
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.credit-wrapper img:hover{
+    transform:scale(1.08);
+}
+
+.credit-popup{
+    position:absolute;
+
+    right:85px;
+    bottom:10px;
+
+    background:white;
+    color:#111827;
+
+    padding:14px 18px;
+    width:240px;
+
+    border-radius:20px 8px 20px 8px;
+
+    border:2px solid #bfdbfe;
+
+    font-size:14px;
+    line-height:1.5;
+
+    box-shadow:0 15px 35px rgba(0,0,0,0.08);
+
+    opacity:0;
+
+    transform:translateX(10px);
+
+    transition:0.3s;
+}
+
+.credit-wrapper:hover .credit-popup{
+    opacity:1;
+    transform:translateX(0);
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes gradientMove{
+    to{
+        background-position:200% center;
+    }
+}
+
+@media(max-width:900px){
+
+.hero h1{
+    font-size:48px;
+}
+
+.nav-content{
+    flex-direction:column;
+    gap:20px;
+}
+
+.nav-links a{
+    margin:0 10px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
+<div id="progress-bar"></div>
+
+<div class="blur1"></div>
+<div class="blur2"></div>
+
 <!-- NAVBAR -->
+
 <nav>
-    <h2>Data Privacy</h2>
-    <div>
-        <a href="home.html">Home</a>
-        <a href="overview.html">Overview</a>
-        <a href="impact.html">Impact</a>
-        <a href="examples.html">Examples</a>
-        <a href="protection.html">Protection</a>
-    </div>
+<div class="container nav-content">
+
+<div class="logo">
+Data Privacy
+</div>
+
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="overview.html" class="active">Overview</a>
+<a href="impact.html">Impact</a>
+<a href="examples.html">Examples</a>
+<a href="protection.html">Protection</a>
+</div>
+
+</div>
 </nav>
 
-<!-- CONTENT -->
-<section class="section">
-    <h1>What is Data Privacy?</h1>
+<!-- HERO -->
 
-    <p>
-        Data privacy is about protecting your personal information online. This includes things like your 
-        location, messages, search history, and what you do on apps and websites.
-    </p>
+<section class="hero">
 
-    <p>
-        When you use your phone or go online, companies collect this data. They use it to understand your 
-        behavior, show ads, and improve their services. Many people do not realize how much of their data 
-        is being collected every day.
-    </p>
+<div class="container">
 
-    <p>
-        Digital surveillance means that your activity is being watched or tracked. This can happen through 
-        apps, social media, and websites. Because of this, data privacy has become an important issue in 
-        today’s digital world.
-    </p>
+<h1>
+Overview of Data Privacy
+</h1>
 
-    <!-- IMAGE -->
-    <div class="image">
-        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3" alt="cyber security">
-    </div>
+<p>
+Data privacy and digital surveillance affect millions of people every day. 
+Companies, governments, and apps collect personal information through websites, social media, phones, and online services.
+Many people do not realize how much of their information is stored, tracked, or shared online.
+</p>
 
-    <h1>Why You Should Care</h1>
-
-    <p>
-        Your personal data is valuable, and when it is collected without your full understanding, it can 
-        lead to problems. This includes losing control of your information, being tracked without knowing, 
-        and possible risks like data leaks or hacking.
-    </p>
+</div>
 
 </section>
 
-<!-- SOURCES -->
+<!-- CARDS -->
+
 <section class="section">
-    <h1>Sources</h1>
-    <p>Federal Trade Commission - Privacy and Security</p>
-    <p>Electronic Frontier Foundation - Privacy Rights</p>
+
+<div class="container">
+
+<h2 class="section-title">
+Main Issues
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<div class="card-icon">
+<i class="fa-solid fa-eye"></i>
+</div>
+
+<h3>
+Surveillance
+</h3>
+
+<p>
+Governments and companies can monitor online activity, locations, and personal information.
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="card-icon">
+<i class="fa-solid fa-database"></i>
+</div>
+
+<h3>
+Data Collection
+</h3>
+
+<p>
+Apps and websites gather huge amounts of user data for ads, tracking, and recommendations.
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="card-icon">
+<i class="fa-solid fa-user-secret"></i>
+</div>
+
+<h3>
+Privacy Risks
+</h3>
+
+<p>
+Personal information can be leaked, stolen, or shared without permission.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- INFORMATION -->
+
+<section class="section">
+
+<div class="container">
+
+<h2 class="section-title">
+Why It Matters
+</h2>
+
+<div class="info-box">
+
+<p>
+Digital privacy is considered a human rights issue because everyone deserves control over their personal information. 
+Without privacy protections, people can be tracked, influenced, or exposed online.
+</p>
+
+<p>
+Many organizations and activists are working to improve online safety by creating stronger privacy laws, increasing awareness, and teaching people how to protect their information online.
+</p>
+
+<p>
+As technology continues to grow, protecting digital privacy becomes more important for individuals, schools, businesses, and communities around the world.
+</p>
+
+</div>
+
+</div>
+
 </section>
 
 <!-- FOOTER -->
+
 <footer>
-    <p>Understanding data privacy helps you stay safe online.</p>
+
+<div class="container">
+Sources: Pew Research Center • United Nations • Electronic Frontier Foundation
+</div>
+
 </footer>
+
+<!-- PROJECT CREDIT -->
+
+<div class="credit-wrapper">
+
+<img src="your-image.png" alt="Project">
+
+<div class="credit-popup">
+Turner High School Final Project<br>
+by Theodore B
+</div>
+
+</div>
+
+<script>
+
+window.onscroll = () => {
+
+let winScroll =
+document.body.scrollTop ||
+document.documentElement.scrollTop;
+
+let height =
+document.documentElement.scrollHeight -
+document.documentElement.clientHeight;
+
+let scrolled = (winScroll / height) * 100;
+
+document.getElementById("progress-bar").style.width =
+scrolled + "%";
+
+};
+
+</script>
 
 </body>
 </html>
