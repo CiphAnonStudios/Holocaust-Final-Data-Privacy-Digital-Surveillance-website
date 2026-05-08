@@ -4,196 +4,461 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Protection - Data Privacy</title>
+<title>Protection | Data Privacy</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    font-family: 'Inter', sans-serif;
-    background: #0b0f19;
-    color: #e5e7eb;
+html{
+    scroll-behavior:smooth;
 }
 
-/* NAVBAR */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 60px;
-    background: rgba(15, 23, 42, 0.95);
-    position: sticky;
-    top: 0;
+body{
+    font-family:'Inter',sans-serif;
+    background:#f8fbff;
+    color:#111827;
+    overflow-x:hidden;
+    position:relative;
+    min-height:100vh;
 }
 
-nav h2 {
-    font-weight: 600;
+/* PROGRESS BAR */
+
+#progress-bar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:0%;
+    height:5px;
+    background:linear-gradient(to right,#60a5fa,#2563eb);
+    z-index:99999;
+    box-shadow:0 0 20px rgba(37,99,235,0.4);
 }
 
-nav a {
-    color: #9ca3af;
-    margin-left: 25px;
-    text-decoration: none;
-    font-size: 14px;
+/* BACKGROUND */
+
+.blur1,
+.blur2{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(140px);
+    z-index:-1;
 }
 
-nav a:hover {
-    color: white;
+.blur1{
+    width:500px;
+    height:500px;
+    background:#93c5fd;
+    top:-150px;
+    left:-120px;
+    opacity:0.5;
 }
 
-/* SECTION */
-.section {
-    padding: 80px 60px;
-    max-width: 1000px;
-    margin: auto;
+.blur2{
+    width:450px;
+    height:450px;
+    background:#bfdbfe;
+    right:-100px;
+    top:400px;
+    opacity:0.45;
 }
 
-h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
+/* CONTAINER */
+
+.container{
+    width:100%;
+    max-width:1350px;
+    margin:auto;
+    padding:0 40px;
 }
 
-p {
-    color: #9ca3af;
-    line-height: 1.7;
-    margin-bottom: 20px;
+/* NAV */
+
+nav{
+    width:100%;
+    padding:25px 0;
+    position:sticky;
+    top:0;
+    z-index:999;
+    backdrop-filter:blur(18px);
+    background:rgba(255,255,255,0.6);
+    border-bottom:1px solid #dbeafe;
 }
 
-/* TIPS */
-.tips {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px;
-    margin-top: 40px;
+.nav-content{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-.tip-box {
-    background: #111827;
-    padding: 25px;
-    border-radius: 12px;
-    border: 1px solid #1f2937;
+.logo{
+    font-size:24px;
+    font-weight:700;
 }
 
-.tip-box h3 {
-    margin-bottom: 10px;
+.nav-links a{
+    text-decoration:none;
+    color:#4b5563;
+    margin-left:28px;
+    font-size:15px;
+    transition:0.25s;
 }
 
-/* IMAGE */
-.image {
-    text-align: center;
-    margin: 40px 0;
+.nav-links a:hover,
+.nav-links a.active{
+    color:#2563eb;
+    font-weight:600;
 }
 
-.image img {
-    width: 100%;
-    max-width: 650px;
-    border-radius: 12px;
+/* HERO */
+
+.hero{
+    padding:110px 0 80px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:68px;
+    margin-bottom:25px;
+
+    background:linear-gradient(to right,#2563eb,#60a5fa,#2563eb);
+    background-size:200% auto;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:fadeUp 1s ease, gradientMove 5s linear infinite;
+}
+
+.hero p{
+    max-width:900px;
+    margin:auto;
+    color:#6b7280;
+    line-height:1.9;
+    font-size:18px;
+}
+
+/* CARDS */
+
+.section{
+    padding:80px 0;
+}
+
+.section-title{
+    font-size:42px;
+    margin-bottom:20px;
+    position:relative;
+}
+
+.section-title::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-10px;
+    width:80px;
+    height:5px;
+    border-radius:999px;
+    background:linear-gradient(to right,#60a5fa,#2563eb);
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+    margin-top:50px;
+}
+
+.card{
+    background:rgba(255,255,255,0.75);
+    backdrop-filter:blur(14px);
+    border:2px solid #bfdbfe;
+    padding:35px;
+    border-radius:30px 10px 30px 10px;
+    transition:0.35s;
+    box-shadow:0 15px 40px rgba(0,0,0,0.04);
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    border-color:#60a5fa;
+    box-shadow:0 25px 50px rgba(37,99,235,0.12),
+    0 0 25px rgba(96,165,250,0.25);
+}
+
+.card-icon{
+    width:65px;
+    height:65px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(to bottom right,#60a5fa,#2563eb);
+    border-radius:22px 8px 22px 8px;
+    margin-bottom:25px;
+    color:white;
+    font-size:24px;
+    box-shadow:0 10px 25px rgba(37,99,235,0.2);
+}
+
+.card h3{
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+.card p{
+    color:#6b7280;
+    line-height:1.8;
+}
+
+/* STEPS BOX */
+
+.step-box{
+    background:white;
+    border:2px solid #dbeafe;
+    border-radius:35px 12px 35px 12px;
+    padding:40px;
+    margin-top:40px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.04);
+    transition:0.3s;
+}
+
+.step-box:hover{
+    transform:translateY(-5px);
+    border-color:#60a5fa;
+}
+
+.step-number{
+    font-size:40px;
+    font-weight:700;
+    color:#2563eb;
+    margin-bottom:10px;
+    animation:pulse 3s infinite;
+}
+
+.step-box h3{
+    margin-bottom:10px;
+}
+
+.step-box p{
+    color:#6b7280;
+    line-height:1.8;
 }
 
 /* FOOTER */
-footer {
-    text-align: center;
-    padding: 30px;
-    background: #020617;
-    color: #6b7280;
-    margin-top: 40px;
+
+footer{
+    padding:50px 0;
+    text-align:center;
+    color:#6b7280;
+    font-size:15px;
 }
+
+/* CREDIT */
+
+.credit-wrapper{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    z-index:1000;
+}
+
+.credit-wrapper img{
+    width:60px;
+    height:60px;
+    object-fit:cover;
+    border-radius:24px 8px 24px 8px;
+    border:2px solid #93c5fd;
+    box-shadow:0 10px 25px rgba(37,99,235,0.15);
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.credit-wrapper img:hover{
+    transform:scale(1.08);
+}
+
+.credit-popup{
+    position:absolute;
+    right:85px;
+    bottom:10px;
+    background:white;
+    color:#111827;
+    padding:14px 18px;
+    width:240px;
+    border-radius:20px 8px 20px 8px;
+    border:2px solid #bfdbfe;
+    font-size:14px;
+    line-height:1.5;
+    box-shadow:0 15px 35px rgba(0,0,0,0.08);
+    opacity:0;
+    transform:translateX(10px);
+    transition:0.3s;
+}
+
+.credit-wrapper:hover .credit-popup{
+    opacity:1;
+    transform:translateX(0);
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(30px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes gradientMove{
+    to{background-position:200% center;}
+}
+
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.05);}
+    100%{transform:scale(1);}
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+.hero h1{font-size:48px;}
+.nav-content{flex-direction:column;gap:20px;}
+.nav-links a{margin:0 10px;}
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<nav>
-    <h2>Data Privacy</h2>
+<div id="progress-bar"></div>
 
-    <div>
-        <a href="home.html">Home</a>
-        <a href="overview.html">Overview</a>
-        <a href="impact.html">Impact</a>
-        <a href="examples.html">Examples</a>
-        <a href="protection.html">Protection</a>
-    </div>
+<div class="blur1"></div>
+<div class="blur2"></div>
+
+<!-- NAV -->
+
+<nav>
+<div class="container nav-content">
+
+<div class="logo">Data Privacy</div>
+
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="overview.html">Overview</a>
+<a href="impact.html">Impact</a>
+<a href="examples.html">Examples</a>
+<a href="protection.html" class="active">Protection</a>
+</div>
+
+</div>
 </nav>
 
-<!-- CONTENT -->
-<section class="section">
+<!-- HERO -->
 
-    <h1>How to Protect Your Data</h1>
+<section class="hero">
+<div class="container">
 
-    <p>
-        There are many simple ways to protect your personal information online. Learning how to stay
-        safe can help reduce tracking, improve privacy, and keep your accounts secure.
-    </p>
+<h1>How to Protect Yourself</h1>
 
-    <!-- IMAGE -->
-    <div class="image">
-        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3" alt="online protection">
-    </div>
+<p>
+Even though data tracking is common, there are simple ways to protect your privacy online and reduce how much information is collected about you.
+</p>
 
-    <!-- TIPS -->
-    <div class="tips">
-
-        <div class="tip-box">
-            <h3>Use Strong Passwords</h3>
-            <p>
-                Create passwords that are hard to guess and avoid using the same password for every account.
-            </p>
-        </div>
-
-        <div class="tip-box">
-            <h3>Check App Permissions</h3>
-            <p>
-                Review what apps can access, like your location, camera, or contacts.
-            </p>
-        </div>
-
-        <div class="tip-box">
-            <h3>Turn Off Location</h3>
-            <p>
-                Disable location tracking when it is not needed to reduce data collection.
-            </p>
-        </div>
-
-        <div class="tip-box">
-            <h3>Be Careful Online</h3>
-            <p>
-                Avoid sharing too much personal information on social media and websites.
-            </p>
-        </div>
-
-    </div>
-
-    <h1 style="margin-top:60px;">Take Action</h1>
-
-    <p>
-        Understanding data privacy is the first step toward protecting yourself online. By learning
-        about digital surveillance and making safer choices, people can help protect their rights
-        and spread awareness about this issue.
-    </p>
-
+</div>
 </section>
 
-<!-- SOURCES -->
+<!-- CARDS -->
+
 <section class="section">
+<div class="container">
 
-    <h1>Sources</h1>
+<h2 class="section-title">Simple Protection Steps</h2>
 
-    <p>Federal Trade Commission - Privacy and Security</p>
-    <p>Electronic Frontier Foundation - Privacy Rights</p>
+<div class="cards">
 
+<div class="card">
+<div class="card-icon"><i class="fa-solid fa-lock"></i></div>
+<h3>Use Strong Passwords</h3>
+<p>
+Create unique passwords for each account and use a mix of letters, numbers, and symbols.
+</p>
+</div>
+
+<div class="card">
+<div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+<h3>Limit App Permissions</h3>
+<p>
+Only allow apps to access things they actually need like location or camera.
+</p>
+</div>
+
+<div class="card">
+<div class="card-icon"><i class="fa-solid fa-eye-slash"></i></div>
+<h3>Reduce Tracking</h3>
+<p>
+Turn off ad tracking and use privacy settings in apps and browsers.
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- STEPS -->
+
+<section class="section">
+<div class="container">
+
+<h2 class="section-title">Extra Safety Tips</h2>
+
+<div class="step-box">
+<div class="step-number">01</div>
+<h3>Think Before You Share</h3>
+<p>Once something is posted online, it can stay there forever.</p>
+</div>
+
+<div class="step-box">
+<div class="step-number">02</div>
+<h3>Use Secure Connections</h3>
+<p>Avoid using public Wi-Fi for sensitive information like passwords or banking.</p>
+</div>
+
+<div class="step-box">
+<div class="step-number">03</div>
+<h3>Update Your Devices</h3>
+<p>Updates help fix security problems that hackers could use.</p>
+</div>
+
+</div>
 </section>
 
 <!-- FOOTER -->
+
 <footer>
-    <p>Protecting your privacy helps create a safer digital world.</p>
+<div class="container">
+Sources: Electronic Frontier Foundation • Pew Research Center • United Nations
+</div>
 </footer>
+
+<!-- CREDIT -->
+
+<div class="credit-wrapper">
+<img src="your-image.png">
+<div class="credit-popup">
+Turner High School Final Project<br>
+by Theodore B
+</div>
+</div>
 
 </body>
 </html>
