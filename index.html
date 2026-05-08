@@ -26,6 +26,7 @@ body{
     color:#111827;
     overflow-x:hidden;
     position:relative;
+    min-height:100vh;
 }
 
 /* BACKGROUND EFFECTS */
@@ -268,6 +269,66 @@ footer{
     text-align:center;
     color:#6b7280;
     font-size:15px;
+}
+
+/* CREDIT */
+
+.credit-wrapper{
+    position:absolute;
+    bottom:40px;
+    right:40px;
+}
+
+.credit-wrapper img{
+    width:70px;
+    height:70px;
+    object-fit:cover;
+
+    border-radius:24px 8px 24px 8px;
+
+    border:2px solid #93c5fd;
+
+    box-shadow:0 10px 25px rgba(37,99,235,0.15);
+
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.credit-wrapper img:hover{
+    transform:scale(1.08);
+}
+
+.credit-popup{
+    position:absolute;
+
+    right:85px;
+    bottom:10px;
+
+    background:white;
+    color:#111827;
+
+    padding:14px 18px;
+    width:240px;
+
+    border-radius:20px 8px 20px 8px;
+
+    border:2px solid #bfdbfe;
+
+    font-size:14px;
+    line-height:1.5;
+
+    box-shadow:0 15px 35px rgba(0,0,0,0.08);
+
+    opacity:0;
+
+    transform:translateX(10px);
+
+    transition:0.3s;
+}
+
+.credit-wrapper:hover .credit-popup{
+    opacity:1;
+    transform:translateX(0);
 }
 
 /* ANIMATIONS */
@@ -525,6 +586,19 @@ People can help spread awareness and make safer choices when using technology.
 Raising awareness about digital privacy helps protect human rights online.
 </div>
 </footer>
+
+<!-- PROJECT CREDIT -->
+
+<div class="credit-wrapper">
+
+<img src="your-image.png" alt="Project">
+
+<div class="credit-popup">
+Turner High School Final Project<br>
+by Theodore B
+</div>
+
+</div>
 
 </body>
 </html>
