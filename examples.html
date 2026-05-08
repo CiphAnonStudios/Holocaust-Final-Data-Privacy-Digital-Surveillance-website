@@ -4,189 +4,467 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Examples - Data Privacy</title>
+<title>Examples | Data Privacy</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    font-family: 'Inter', sans-serif;
-    background: #0b0f19;
-    color: #e5e7eb;
+html{
+    scroll-behavior:smooth;
 }
 
-/* NAVBAR */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 60px;
-    background: rgba(15, 23, 42, 0.95);
-    position: sticky;
-    top: 0;
+body{
+    font-family:'Inter',sans-serif;
+    background:#f8fbff;
+    color:#111827;
+    overflow-x:hidden;
+    position:relative;
+    min-height:100vh;
 }
 
-nav h2 {
-    font-weight: 600;
+/* PROGRESS BAR */
+
+#progress-bar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:0%;
+    height:5px;
+    background:linear-gradient(to right,#60a5fa,#2563eb);
+    z-index:99999;
+    box-shadow:0 0 20px rgba(37,99,235,0.4);
 }
 
-nav a {
-    color: #9ca3af;
-    margin-left: 25px;
-    text-decoration: none;
-    font-size: 14px;
+/* BACKGROUND */
+
+.blur1,
+.blur2{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(140px);
+    z-index:-1;
 }
 
-nav a:hover {
-    color: white;
+.blur1{
+    width:500px;
+    height:500px;
+    background:#93c5fd;
+    top:-150px;
+    left:-120px;
+    opacity:0.5;
 }
 
-/* SECTION */
-.section {
-    padding: 80px 60px;
-    max-width: 1000px;
-    margin: auto;
+.blur2{
+    width:450px;
+    height:450px;
+    background:#bfdbfe;
+    right:-100px;
+    top:400px;
+    opacity:0.45;
 }
 
-h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
+/* CONTAINER */
+
+.container{
+    width:100%;
+    max-width:1350px;
+    margin:auto;
+    padding:0 40px;
 }
 
-p {
-    color: #9ca3af;
-    line-height: 1.7;
-    margin-bottom: 20px;
+/* NAV */
+
+nav{
+    width:100%;
+    padding:25px 0;
+    position:sticky;
+    top:0;
+    z-index:999;
+    backdrop-filter:blur(18px);
+    background:rgba(255,255,255,0.6);
+    border-bottom:1px solid #dbeafe;
 }
 
-/* EXAMPLE BOXES */
-.examples {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-    margin-top: 40px;
+.nav-content{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-.example-box {
-    background: #111827;
-    padding: 25px;
-    border-radius: 12px;
-    border: 1px solid #1f2937;
+.logo{
+    font-size:24px;
+    font-weight:700;
 }
 
-.example-box h3 {
-    margin-bottom: 10px;
+.nav-links a{
+    text-decoration:none;
+    color:#4b5563;
+    margin-left:28px;
+    font-size:15px;
+    transition:0.25s;
 }
 
-/* IMAGE */
-.image {
-    text-align: center;
-    margin: 40px 0;
+.nav-links a:hover,
+.nav-links a.active{
+    color:#2563eb;
+    font-weight:600;
 }
 
-.image img {
-    width: 100%;
-    max-width: 650px;
-    border-radius: 12px;
+/* HERO */
+
+.hero{
+    padding:110px 0 80px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:68px;
+    margin-bottom:25px;
+
+    background:linear-gradient(to right,#2563eb,#60a5fa,#2563eb);
+    background-size:200% auto;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:fadeUp 1s ease, gradientMove 5s linear infinite;
+}
+
+.hero p{
+    max-width:900px;
+    margin:auto;
+    color:#6b7280;
+    line-height:1.9;
+    font-size:18px;
+}
+
+/* CARDS */
+
+.section{
+    padding:80px 0;
+}
+
+.section-title{
+    font-size:42px;
+    margin-bottom:20px;
+    position:relative;
+}
+
+.section-title::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-10px;
+    width:80px;
+    height:5px;
+    border-radius:999px;
+    background:linear-gradient(to right,#60a5fa,#2563eb);
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+    margin-top:50px;
+}
+
+.card{
+    background:rgba(255,255,255,0.75);
+    backdrop-filter:blur(14px);
+    border:2px solid #bfdbfe;
+    padding:35px;
+    border-radius:30px 10px 30px 10px;
+    transition:0.35s;
+    box-shadow:0 15px 40px rgba(0,0,0,0.04);
+    animation:fadeUp 1s ease;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    border-color:#60a5fa;
+    box-shadow:0 25px 50px rgba(37,99,235,0.12),
+    0 0 25px rgba(96,165,250,0.25);
+}
+
+.card-icon{
+    width:65px;
+    height:65px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(to bottom right,#60a5fa,#2563eb);
+    border-radius:22px 8px 22px 8px;
+    margin-bottom:25px;
+    color:white;
+    font-size:24px;
+    box-shadow:0 10px 25px rgba(37,99,235,0.2);
+}
+
+.card h3{
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+.card p{
+    color:#6b7280;
+    line-height:1.8;
+}
+
+/* EXAMPLES SECTION */
+
+.example-box{
+    background:white;
+    border:2px solid #dbeafe;
+    border-radius:35px 12px 35px 12px;
+    padding:40px;
+    margin-top:40px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.04);
+}
+
+.example-box h3{
+    margin-bottom:10px;
+    color:#2563eb;
+}
+
+.example-box p{
+    color:#6b7280;
+    line-height:1.8;
 }
 
 /* FOOTER */
-footer {
-    text-align: center;
-    padding: 30px;
-    background: #020617;
-    color: #6b7280;
-    margin-top: 40px;
+
+footer{
+    padding:50px 0;
+    text-align:center;
+    color:#6b7280;
+    font-size:15px;
 }
+
+/* CREDIT */
+
+.credit-wrapper{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    z-index:1000;
+}
+
+.credit-wrapper img{
+    width:60px;
+    height:60px;
+    object-fit:cover;
+    border-radius:24px 8px 24px 8px;
+    border:2px solid #93c5fd;
+    box-shadow:0 10px 25px rgba(37,99,235,0.15);
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.credit-wrapper img:hover{
+    transform:scale(1.08);
+}
+
+.credit-popup{
+    position:absolute;
+    right:85px;
+    bottom:10px;
+    background:white;
+    color:#111827;
+    padding:14px 18px;
+    width:240px;
+    border-radius:20px 8px 20px 8px;
+    border:2px solid #bfdbfe;
+    font-size:14px;
+    line-height:1.5;
+    box-shadow:0 15px 35px rgba(0,0,0,0.08);
+    opacity:0;
+    transform:translateX(10px);
+    transition:0.3s;
+}
+
+.credit-wrapper:hover .credit-popup{
+    opacity:1;
+    transform:translateX(0);
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(30px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes gradientMove{
+    to{background-position:200% center;}
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+.hero h1{font-size:48px;}
+.nav-content{flex-direction:column;gap:20px;}
+.nav-links a{margin:0 10px;}
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<nav>
-    <h2>Data Privacy</h2>
+<div id="progress-bar"></div>
 
-    <div>
-        <a href="home.html">Home</a>
-        <a href="overview.html">Overview</a>
-        <a href="impact.html">Impact</a>
-        <a href="examples.html">Examples</a>
-        <a href="protection.html">Protection</a>
-    </div>
+<div class="blur1"></div>
+<div class="blur2"></div>
+
+<!-- NAV -->
+
+<nav>
+<div class="container nav-content">
+
+<div class="logo">Data Privacy</div>
+
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="overview.html">Overview</a>
+<a href="impact.html">Impact</a>
+<a href="examples.html" class="active">Examples</a>
+<a href="protection.html">Protection</a>
+</div>
+
+</div>
 </nav>
 
-<!-- CONTENT -->
-<section class="section">
+<!-- HERO -->
 
-    <h1>Real Examples of Data Tracking</h1>
+<section class="hero">
+<div class="container">
 
-    <p>
-        Data privacy issues happen every day, often without people realizing it. Many websites,
-        apps, and social media platforms collect information about users and track online activity.
-    </p>
+<h1>Real-World Examples</h1>
 
-    <!-- IMAGE -->
-    <div class="image">
-        <img src="https://images.unsplash.com/photo-1510511459019-5dda7724fd87" alt="data tracking">
-    </div>
+<p>
+Data privacy issues happen every day. These examples show how companies, apps, and governments collect or misuse personal information.
+</p>
 
-    <!-- EXAMPLES -->
-    <div class="examples">
-
-        <div class="example-box">
-            <h3>Targeted Ads</h3>
-            <p>
-                After searching for something online, ads related to that topic often appear on
-                social media or other websites.
-            </p>
-        </div>
-
-        <div class="example-box">
-            <h3>Location Tracking</h3>
-            <p>
-                Many apps collect location data in the background, even when the app is not being used.
-            </p>
-        </div>
-
-        <div class="example-box">
-            <h3>Social Media Data</h3>
-            <p>
-                Social media platforms collect information about likes, searches, and user behavior.
-            </p>
-        </div>
-
-        <div class="example-box">
-            <h3>Cookies</h3>
-            <p>
-                Websites use cookies to track activity and remember user behavior online.
-            </p>
-        </div>
-
-    </div>
-
+</div>
 </section>
 
-<!-- SOURCES -->
+<!-- CONTENT -->
+
 <section class="section">
+<div class="container">
 
-    <h1>Sources</h1>
+<h2 class="section-title">Examples of Data Privacy Issues</h2>
 
-    <p>Federal Trade Commission - Privacy and Security</p>
-    <p>Electronic Frontier Foundation - Privacy Rights</p>
+<div class="cards">
 
+<div class="card">
+<div class="card-icon"><i class="fa-solid fa-bug"></i></div>
+<h3>Data Breaches</h3>
+<p>
+Companies like social media platforms or stores can get hacked, exposing passwords, emails, and personal data.
+</p>
+</div>
+
+<div class="card">
+<div class="card-icon"><i class="fa-solid fa-location-dot"></i></div>
+<h3>Location Tracking</h3>
+<p>
+Apps track your exact location even when you are not using them, sometimes without clear permission.
+</p>
+</div>
+
+<div class="card">
+<div class="card-icon"><i class="fa-solid fa-ad"></i></div>
+<h3>Targeted Ads</h3>
+<p>
+Your searches and clicks are used to show personalized ads based on your behavior.
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- EXTRA -->
+
+<section class="section">
+<div class="container">
+
+<h2 class="section-title">Real Situations</h2>
+
+<div class="example-box">
+<h3>Social Media Tracking</h3>
+<p>
+Many social media apps collect data like what you like, watch, and search to build a profile about you.
+</p>
+</div>
+
+<div class="example-box">
+<h3>Shopping Websites</h3>
+<p>
+Online stores track what you view and buy to predict what you might want next.
+</p>
+</div>
+
+<div class="example-box">
+<h3>Free Apps</h3>
+<p>
+Some free apps make money by collecting and selling user data to advertisers.
+</p>
+</div>
+
+</div>
 </section>
 
 <!-- FOOTER -->
+
 <footer>
-    <p>Real examples help show how common digital tracking has become.</p>
+<div class="container">
+Sources: Pew Research Center • Electronic Frontier Foundation • United Nations
+</div>
 </footer>
+
+<!-- CREDIT -->
+
+<div class="credit-wrapper">
+<img src="your-image.png">
+<div class="credit-popup">
+Turner High School Final Project<br>
+by Theodore B
+</div>
+</div>
+
+<script>
+
+window.onscroll = () => {
+
+let winScroll =
+document.body.scrollTop ||
+document.documentElement.scrollTop;
+
+let height =
+document.documentElement.scrollHeight -
+document.documentElement.clientHeight;
+
+let scrolled = (winScroll / height) * 100;
+
+document.getElementById("progress-bar").style.width =
+scrolled + "%";
+
+};
+
+</script>
 
 </body>
 </html>
