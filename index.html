@@ -8,6 +8,9 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 <style>
 
 *{
@@ -27,6 +30,22 @@ body{
     overflow-x:hidden;
     position:relative;
     min-height:100vh;
+}
+
+/* PROGRESS BAR */
+
+#progress-bar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:0%;
+    height:5px;
+
+    background:linear-gradient(to right,#60a5fa,#2563eb);
+
+    z-index:99999;
+
+    box-shadow:0 0 20px rgba(37,99,235,0.4);
 }
 
 /* BACKGROUND EFFECTS */
@@ -71,6 +90,17 @@ body{
 nav{
     width:100%;
     padding:25px 0;
+
+    position:sticky;
+    top:0;
+
+    z-index:999;
+
+    backdrop-filter:blur(18px);
+
+    background:rgba(255,255,255,0.6);
+
+    border-bottom:1px solid #dbeafe;
 }
 
 .nav-content{
@@ -141,7 +171,10 @@ nav{
     font-weight:600;
     box-shadow:0 10px 30px rgba(37,99,235,0.3);
     transition:0.3s;
-    animation:fadeUp 1.4s ease;
+
+    animation:
+    fadeUp 1.4s ease,
+    glow 4s infinite;
 }
 
 .hero-btn:hover{
@@ -173,6 +206,25 @@ nav{
 .section-title{
     font-size:42px;
     margin-bottom:18px;
+    position:relative;
+}
+
+.section-title::after{
+
+content:"";
+
+position:absolute;
+
+left:0;
+bottom:-10px;
+
+width:80px;
+height:5px;
+
+border-radius:999px;
+
+background:linear-gradient(to right,#60a5fa,#2563eb);
+
 }
 
 .section-sub{
@@ -204,16 +256,33 @@ nav{
 
 .card:hover{
     transform:translateY(-10px);
+
     border-color:#60a5fa;
-    box-shadow:0 25px 50px rgba(37,99,235,0.12);
+
+    box-shadow:
+    0 25px 50px rgba(37,99,235,0.12),
+    0 0 25px rgba(96,165,250,0.25);
 }
 
 .card-icon{
     width:60px;
     height:60px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
     border-radius:20px 8px 20px 8px;
+
     background:linear-gradient(to bottom right,#60a5fa,#2563eb);
+
     margin-bottom:24px;
+
+    color:white;
+
+    font-size:22px;
+
+    box-shadow:0 10px 20px rgba(37,99,235,0.25);
 }
 
 .card h3{
@@ -237,17 +306,30 @@ nav{
 
 .stat{
     background:white;
+
     border:2px solid #dbeafe;
+
     padding:40px;
+
     text-align:center;
+
     border-radius:34px 10px 34px 10px;
-    transition:0.3s;
+
+    transition:0.35s;
+
     box-shadow:0 10px 30px rgba(0,0,0,0.04);
+
+    animation:fadeUp 1s ease;
 }
 
 .stat:hover{
-    transform:translateY(-8px);
+    transform:translateY(-10px) scale(1.03);
+
     border-color:#60a5fa;
+
+    box-shadow:
+    0 25px 50px rgba(37,99,235,0.12),
+    0 0 30px rgba(96,165,250,0.18);
 }
 
 .stat h2{
@@ -275,13 +357,14 @@ footer{
 
 .credit-wrapper{
     position:fixed;
-    bottom:40px;
-    right:40px;
+    bottom:25px;
+    right:25px;
+    z-index:1000;
 }
 
 .credit-wrapper img{
-    width:70px;
-    height:70px;
+    width:60px;
+    height:60px;
     object-fit:cover;
 
     border-radius:24px 8px 24px 8px;
@@ -368,6 +451,22 @@ footer{
     }
 }
 
+@keyframes glow{
+
+0%{
+    box-shadow:0 0 0 rgba(37,99,235,0);
+}
+
+50%{
+    box-shadow:0 0 25px rgba(37,99,235,0.18);
+}
+
+100%{
+    box-shadow:0 0 0 rgba(37,99,235,0);
+}
+
+}
+
 /* MOBILE */
 
 @media(max-width:900px){
@@ -400,6 +499,8 @@ footer{
 </head>
 
 <body>
+
+<div id="progress-bar"></div>
 
 <div class="blur1"></div>
 <div class="blur2"></div>
@@ -472,7 +573,9 @@ Most people do not realize how much of their online activity is being tracked.
 
 <div class="card">
 
-<div class="card-icon"></div>
+<div class="card-icon">
+<i class="fa-solid fa-location-dot"></i>
+</div>
 
 <h3>
 Tracking
@@ -486,7 +589,9 @@ Apps and websites monitor searches, clicks, and location data.
 
 <div class="card">
 
-<div class="card-icon"></div>
+<div class="card-icon">
+<i class="fa-solid fa-user-shield"></i>
+</div>
 
 <h3>
 Privacy
@@ -500,7 +605,9 @@ People can lose control over how their information is used online.
 
 <div class="card">
 
-<div class="card-icon"></div>
+<div class="card-icon">
+<i class="fa-solid fa-lock"></i>
+</div>
 
 <h3>
 Security
@@ -514,7 +621,9 @@ Data leaks and cyber attacks can expose personal information.
 
 <div class="card">
 
-<div class="card-icon"></div>
+<div class="card-icon">
+<i class="fa-solid fa-chart-line"></i>
+</div>
 
 <h3>
 Influence
@@ -599,6 +708,27 @@ by Theodore B
 </div>
 
 </div>
+
+<script>
+
+window.onscroll = () => {
+
+let winScroll =
+document.body.scrollTop ||
+document.documentElement.scrollTop;
+
+let height =
+document.documentElement.scrollHeight -
+document.documentElement.clientHeight;
+
+let scrolled = (winScroll / height) * 100;
+
+document.getElementById("progress-bar").style.width =
+scrolled + "%";
+
+};
+
+</script>
 
 </body>
 </html>
