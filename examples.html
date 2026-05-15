@@ -297,6 +297,12 @@ footer{
     border-radius:24px 8px 24px 8px;
     border:2px solid #93c5fd;
     box-shadow:0 10px 25px rgba(37,99,235,0.15);
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.credit-wrapper img:hover{
+    transform:scale(1.08);
 }
 
 .credit-popup{
@@ -333,6 +339,14 @@ footer{
     to{background-position:200% center;}
 }
 
+/* MOBILE */
+
+@media(max-width:900px){
+.hero h1{font-size:48px;}
+.nav-content{flex-direction:column;gap:20px;}
+.nav-links a{margin:0 10px;}
+}
+
 .hero-image{
     flex:1;
     min-width:320px;
@@ -349,25 +363,6 @@ footer{
     margin:50px;
 }
 
-/* MOBILE */
-
-@media(max-width:900px){
-
-.hero h1{
-    font-size:48px;
-}
-
-.nav-content{
-    flex-direction:column;
-    gap:20px;
-}
-
-.nav-links a{
-    margin:0 10px;
-}
-
-}
-
 </style>
 </head>
 
@@ -377,6 +372,8 @@ footer{
 
 <div class="blur1"></div>
 <div class="blur2"></div>
+
+<!-- NAV -->
 
 <nav>
 <div class="container nav-content">
@@ -395,8 +392,9 @@ footer{
 </div>
 </nav>
 
-<section class="hero">
+<!-- HERO -->
 
+<section class="hero">
 <div class="container">
 
 <h1>Real-World Examples</h1>
@@ -410,11 +408,11 @@ Data privacy issues happen every day. These examples show how companies, apps, a
 <div class="hero-image">
 <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3" alt="Data Privacy">
 </div>
-
 </section>
 
-<section class="section">
+<!-- CONTENT -->
 
+<section class="section">
 <div class="container">
 
 <h2 class="section-title">Examples of Data Privacy Issues</h2>
@@ -448,21 +446,48 @@ Your searches and clicks are used to show personalized ads based on your behavio
 </div>
 
 </div>
-
 </section>
 
-<section class="section">
+<!-- EXTRA -->
 
+<section class="section">
 <div class="container">
 
-<h2 class="section-title">Interactive Example</h2>
+<h2 class="section-title">Real Situations</h2>
+
+<div class="example-box">
+<h3>Social Media Tracking</h3>
+<p>
+Many social media apps collect data like what you like, watch, and search to build a profile about you.
+</p>
+</div>
+
+<div class="example-box">
+<h3>Shopping Websites</h3>
+<p>
+Online stores track what you view and buy to predict what you might want next.
+</p>
+
+<div class="hero-image">
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3" alt="Data Privacy">
+</div> 
+</div>
+
+<div class="example-box">
+<h3>Free Apps</h3>
+<p>
+Some free apps make money by collecting and selling user data to advertisers.
+</p>
+</div>
+
+<!-- INTERACTIVE DEMO -->
 
 <div class="example-box">
 
-<h3>Website Tracking Demo</h3>
+<h3>Interactive Tracking Example</h3>
 
 <p>
-This educational example demonstrates some information websites can collect, such as device details and location data if permission is granted.
+This educational example shows some information websites can collect, including device details and your location if permission is allowed.
 </p>
 
 <button class="tracker-btn" onclick="showTrackingInfo()">
@@ -476,14 +501,17 @@ Loading information...
 </div>
 
 </div>
-
 </section>
+
+<!-- FOOTER -->
 
 <footer>
 <div class="container">
 Sources: Pew Research Center • Electronic Frontier Foundation • United Nations
 </div>
 </footer>
+
+<!-- CREDIT -->
 
 <div class="credit-wrapper">
 <img src="THSLogo1.png">
