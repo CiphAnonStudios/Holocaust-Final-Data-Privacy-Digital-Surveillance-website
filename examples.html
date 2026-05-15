@@ -241,6 +241,37 @@ nav{
     line-height:1.8;
 }
 
+/* TRACKER DEMO */
+
+.tracker-btn{
+    margin-top:25px;
+    padding:14px 24px;
+    border:none;
+    border-radius:16px 6px 16px 6px;
+    background:linear-gradient(to right,#60a5fa,#2563eb);
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 10px 25px rgba(37,99,235,0.2);
+}
+
+.tracker-btn:hover{
+    transform:translateY(-3px);
+}
+
+.tracker-info{
+    margin-top:25px;
+    padding:25px;
+    border-radius:24px 10px 24px 10px;
+    background:#eff6ff;
+    border:2px solid #bfdbfe;
+    color:#1e3a8a;
+    line-height:1.9;
+    display:none;
+}
+
 /* FOOTER */
 
 footer{
@@ -266,12 +297,6 @@ footer{
     border-radius:24px 8px 24px 8px;
     border:2px solid #93c5fd;
     box-shadow:0 10px 25px rgba(37,99,235,0.15);
-    transition:0.3s;
-    cursor:pointer;
-}
-
-.credit-wrapper img:hover{
-    transform:scale(1.08);
 }
 
 .credit-popup{
@@ -308,15 +333,7 @@ footer{
     to{background-position:200% center;}
 }
 
-/* MOBILE */
-
-@media(max-width:900px){
-.hero h1{font-size:48px;}
-.nav-content{flex-direction:column;gap:20px;}
-.nav-links a{margin:0 10px;}
-}
-
-    .hero-image{
+.hero-image{
     flex:1;
     min-width:320px;
     display:flex;
@@ -329,9 +346,28 @@ footer{
     border-radius:40px 14px 40px 14px;
     border:3px solid #93c5fd;
     box-shadow:0 25px 60px rgba(37,99,235,0.15);
-    animation:float 5s ease-in-out infinite;
-    margin: 50px;
+    margin:50px;
 }
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.hero h1{
+    font-size:48px;
+}
+
+.nav-content{
+    flex-direction:column;
+    gap:20px;
+}
+
+.nav-links a{
+    margin:0 10px;
+}
+
+}
+
 </style>
 </head>
 
@@ -342,8 +378,6 @@ footer{
 <div class="blur1"></div>
 <div class="blur2"></div>
 
-<!-- NAV -->
-
 <nav>
 <div class="container nav-content">
 
@@ -353,17 +387,16 @@ footer{
 <a href="index.html">Home</a>
 <a href="overview.html">Overview</a>
 <a href="impact.html">Impact</a>
-<a href="examples.html">Examples</a>
+<a href="examples.html" class="active">Examples</a>
 <a href="protection.html">Protection</a>
-<a href="sources.html" class="active">Sources</a>
+<a href="sources.html">Sources</a>
 </div>
 
 </div>
 </nav>
 
-<!-- HERO -->
-
 <section class="hero">
+
 <div class="container">
 
 <h1>Real-World Examples</h1>
@@ -374,14 +407,14 @@ Data privacy issues happen every day. These examples show how companies, apps, a
 
 </div>
 
-    <div class="hero-image">
+<div class="hero-image">
 <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3" alt="Data Privacy">
 </div>
+
 </section>
 
-<!-- CONTENT -->
-
 <section class="section">
+
 <div class="container">
 
 <h2 class="section-title">Examples of Data Privacy Issues</h2>
@@ -415,11 +448,11 @@ Your searches and clicks are used to show personalized ads based on your behavio
 </div>
 
 </div>
+
 </section>
 
-<!-- EXTRA -->
-
 <section class="section">
+
 <div class="container">
 
 <h2 class="section-title">Real Situations</h2>
@@ -436,10 +469,6 @@ Many social media apps collect data like what you like, watch, and search to bui
 <p>
 Online stores track what you view and buy to predict what you might want next.
 </p>
-
-   <div class="hero-image">
-<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3" alt="Data Privacy">
-</div> 
 </div>
 
 <div class="example-box">
@@ -449,10 +478,27 @@ Some free apps make money by collecting and selling user data to advertisers.
 </p>
 </div>
 
-</div>
-</section>
+<div class="example-box">
 
-<!-- FOOTER -->
+<h3>Interactive Tracking Example</h3>
+
+<p>
+This example shows some information websites can collect from visitors, including device information and location (with permission).
+</p>
+
+<button class="tracker-btn" onclick="showTrackingInfo()">
+See What Websites Can Track
+</button>
+
+<div class="tracker-info" id="trackerInfo">
+Loading information...
+</div>
+
+</div>
+
+</div>
+
+</section>
 
 <footer>
 <div class="container">
@@ -460,14 +506,14 @@ Sources: Pew Research Center • Electronic Frontier Foundation • United Natio
 </div>
 </footer>
 
-<!-- CREDIT -->
-
 <div class="credit-wrapper">
 <img src="THSLogo1.png">
+
 <div class="credit-popup">
 Turner High School Final Project<br>
 by Theodore B
 </div>
+
 </div>
 
 <script>
@@ -488,6 +534,66 @@ document.getElementById("progress-bar").style.width =
 scrolled + "%";
 
 };
+
+function showTrackingInfo(){
+
+const infoBox = document.getElementById("trackerInfo");
+
+infoBox.style.display = "block";
+
+let deviceInfo = `
+<b>Device Information:</b><br><br>
+
+Browser: ${navigator.userAgent}<br><br>
+
+Language: ${navigator.language}<br><br>
+
+Platform: ${navigator.platform}<br><br>
+
+Screen Size: ${window.innerWidth} x ${window.innerHeight}<br><br>
+
+Time Zone: ${Intl.DateTimeFormat().resolvedOptions().timeZone}<br><br>
+`;
+
+infoBox.innerHTML = deviceInfo;
+
+if(navigator.geolocation){
+
+navigator.geolocation.getCurrentPosition(
+
+(position)=>{
+
+infoBox.innerHTML += `
+<b>Location Information:</b><br><br>
+
+Latitude: ${position.coords.latitude}<br><br>
+
+Longitude: ${position.coords.longitude}<br><br>
+
+Accuracy: ${position.coords.accuracy} meters
+`;
+
+},
+
+()=>{
+
+infoBox.innerHTML += `
+<br><br><b>Location permission was denied.</b>
+`;
+
+}
+
+);
+
+}else{
+
+infoBox.innerHTML += `
+<br><br><b>Geolocation is not supported on this device.</b>
+`;
+
+}
+
+}
 
 </script>
 
