@@ -455,39 +455,18 @@ Your searches and clicks are used to show personalized ads based on your behavio
 
 <div class="container">
 
-<h2 class="section-title">Real Situations</h2>
-
-<div class="example-box">
-<h3>Social Media Tracking</h3>
-<p>
-Many social media apps collect data like what you like, watch, and search to build a profile about you.
-</p>
-</div>
-
-<div class="example-box">
-<h3>Shopping Websites</h3>
-<p>
-Online stores track what you view and buy to predict what you might want next.
-</p>
-</div>
-
-<div class="example-box">
-<h3>Free Apps</h3>
-<p>
-Some free apps make money by collecting and selling user data to advertisers.
-</p>
-</div>
+<h2 class="section-title">Interactive Example</h2>
 
 <div class="example-box">
 
-<h3>Example Of Things Website Take</h3>
+<h3>Website Tracking Demo</h3>
 
 <p>
-This example shows some information websites can collect from visitors, including device information and location (with permission).
+This educational example demonstrates some information websites can collect, such as device details and location data if permission is granted.
 </p>
 
 <button class="tracker-btn" onclick="showTrackingInfo()">
-(Click To See What Website Track)
+See What Websites Can Track
 </button>
 
 <div class="tracker-info" id="trackerInfo">
@@ -563,14 +542,26 @@ navigator.geolocation.getCurrentPosition(
 
 (position)=>{
 
+const lat = position.coords.latitude;
+const lon = position.coords.longitude;
+
 infoBox.innerHTML += `
 <b>Location Information:</b><br><br>
 
-Latitude: ${position.coords.latitude}<br><br>
+Latitude: ${lat}<br><br>
 
-Longitude: ${position.coords.longitude}<br><br>
+Longitude: ${lon}<br><br>
 
-Accuracy: ${position.coords.accuracy} meters
+Accuracy: ${position.coords.accuracy} meters<br><br>
+
+<iframe
+width="100%"
+height="320"
+style="border:none;border-radius:20px;"
+loading="lazy"
+allowfullscreen
+src="https://maps.google.com/maps?q=${lat},${lon}&z=15&output=embed">
+</iframe>
 `;
 
 },
